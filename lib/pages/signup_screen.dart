@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:travel_app/pages/signin_screen.dart';
@@ -18,6 +19,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController username = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
+  String errorMessage = '';
 
   final _formSignupKey = GlobalKey<FormState>();
   bool agreePersonalData = true;
@@ -212,24 +214,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 print(
                                     'The account already exists for that email.');
                               }
+                              Fluttertoast.showToast(
+                                msg:
+                                    e.message ?? 'An unexpected error occurred',
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Colors.red,
+                                textColor: Colors.white,
+                                fontSize: 16.0,
+                              );
                             } catch (e) {
-                              print(e);
+                              print('An unexpected error occurred: $e');
+                              Fluttertoast.showToast(
+                                msg: 'An unexpected error occurred',
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Colors.red,
+                                textColor: Colors.white,
+                                fontSize: 16.0,
+                              );
                             }
-                            // if (_formSignupKey.currentState!.validate() &&
-                            //     agreePersonalData) {
-                            //   ScaffoldMessenger.of(context).showSnackBar(
-                            //     SnackBar(
-                            //       content: Text('Processing Data'.tr),
-                            //     ),
-                            //   );
-                            //   // Get.to(const SignInScreen());
-                            // } else if (!agreePersonalData) {
-                            //   ScaffoldMessenger.of(context).showSnackBar(
-                            //     SnackBar(
-                            //         content: Text('Please agree to the processing of personal data'.tr)
-                            //     ),
-                            //   );
-                            // }
                           },
                           child: Text('Sign up'.tr),
                         ),

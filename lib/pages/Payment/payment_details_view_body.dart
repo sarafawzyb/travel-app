@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:travel_app/pages/Payment/payment_methods_list_view.dart';
-import '../../widget/done.dart';
+import 'package:travel_app/pages/thank_you_view_body.dart';
 import 'custom_button.dart';
 import 'custom_cradit_card.dart';
 
@@ -44,7 +44,7 @@ class _PaymentDetailsViewBodyState extends State<PaymentDetailsViewBody> {
               child: CustomButton(
                 onTap: () {
                   if (formKey.currentState!.validate()) {
-                    Get.to(const DonePage());
+                    Get.to(const ThankYouViewBody());
                   } else {
                     autovalidateMode = AutovalidateMode.always;
                     setState(() {});

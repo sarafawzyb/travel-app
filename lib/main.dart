@@ -4,12 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:travel_app/local/locale.dart';
 import 'package:travel_app/local/locale_controller.dart';
-import 'package:travel_app/pages/home_page.dart';
 import 'package:travel_app/pages/signin_screen.dart';
 import 'package:travel_app/pages/signup_screen.dart';
-// import 'package:travel_app/pages/places.dart';
 import 'package:travel_app/pages/welcome_screen.dart';
 import 'firebase_options.dart';
+import 'nav_pages.dart/main_wrapper.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,11 +35,13 @@ class MyApp extends StatelessWidget {
       ),
       locale: Get.deviceLocale,
       translations: MyLocale(),
-      home: FirebaseAuth.instance.currentUser == null? WelcomeScreen(): HomePage(),
+      home: FirebaseAuth.instance.currentUser == null
+          ? WelcomeScreen()
+          : MainWrapper(),
       routes: {
         "signup": (context) => const SignUpScreen(),
         "login": (context) => const SignInScreen(),
-        "homepage": (context) => const HomePage()
+        "homepage": (context) => const MainWrapper()
       },
     );
   }
@@ -70,9 +71,9 @@ class _MyHomePageState extends State<MyHomePage> {
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user == null) {
         print(
-            '====================================User is currently signed out!');
+            '==================================== User is currently signed out!');
       } else {
-        print('====================================User is signed in!');
+        print('==================================== User is signed in!');
       }
     });
     super.initState();

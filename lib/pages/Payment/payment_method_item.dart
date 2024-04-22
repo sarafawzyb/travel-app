@@ -35,8 +35,7 @@ class PaymentMethodItem extends StatelessWidget {
         ),
         child: Center(
           child: Image.asset(
-            image,
-            //fit: BoxFit.cover,
+            image, //fit: BoxFit.cover,
           ),
         ),
       ),

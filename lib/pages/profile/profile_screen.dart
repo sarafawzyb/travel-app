@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:travel_app/local/locale_controller.dart';
+import 'package:travel_app/nav_pages.dart/main_wrapper.dart';
 import 'package:travel_app/pages/home_page.dart';
 import 'package:travel_app/pages/profile/widget/profile_menu.dart';
 import '../../widget/coming_soon.dart';
@@ -19,7 +20,7 @@ class ProfileScreen extends StatelessWidget {
           titleSpacing: 100,
           leading: IconButton(
             onPressed: () {
-              Get.to(const HomePage());
+              Get.to(const MainWrapper());
             },
             icon: Icon(
               LineAwesomeIcons.angle_left,

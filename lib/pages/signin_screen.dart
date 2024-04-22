@@ -1,8 +1,7 @@
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-
 import 'package:icons_plus/icons_plus.dart';
 import 'package:travel_app/pages/signup_screen.dart';
 import 'package:travel_app/pages/welcome_page.dart';
@@ -199,41 +198,22 @@ class _SignInScreenState extends State<SignInScreen> {
                                     errorMessage = e.message ?? errorMessage;
                                     break;
                                 }
-                              } else {
-                                errorMessage =
-                                    'An unexpected error occurred. Please try again later.';
                               }
-                              print(errorMessage);
-                              // Show dialog
-                              AwesomeDialog(
-                                context: context,
-                                dialogType: DialogType.error,
-                                animType: AnimType.rightSlide,
-                                title: 'Error Title',
-                                desc: errorMessage,
-                              ).show();
+                              print('FirebaseAuthException: $errorMessage');
+                              Fluttertoast.showToast(
+                                msg: errorMessage,
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Colors.red,
+                                textColor: Colors.white,
+                                fontSize: 16.0,
+                              );
                             }
                           },
                           child: Text('Sign in'.tr),
                         ),
                       ),
-                      // if (_formSignInKey.currentState!.validate() &&
-                      //     rememberPassword) {
-                      //   ScaffoldMessenger.of(context).showSnackBar(
-                      //     SnackBar(
-                      //      content: Text('Processing Data'.tr),
-                      //     ),
-                      //   );
-                      //   Get.to(const WelcomePage());
-                      // } else if (!rememberPassword) {
-                      //   ScaffoldMessenger.of(context).showSnackBar(
-                      //      SnackBar(
-                      //       content: Text(
-                      //           'Please agree to the processing of personal data'.tr
-                      //       ),
-                      //     ),
-                      //   );
-                      // }
                       const SizedBox(
                         height: 25.0,
                       ),

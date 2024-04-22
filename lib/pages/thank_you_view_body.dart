@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:travel_app/nav_pages.dart/main_wrapper.dart';
 
 class ThankYouViewBody extends StatelessWidget {
   const ThankYouViewBody({super.key});
@@ -14,7 +13,16 @@ class ThankYouViewBody extends StatelessWidget {
         toolbarHeight: 30,
         automaticallyImplyLeading: true,
         foregroundColor: Colors.deepPurpleAccent,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios), // You can use any icon here
+          onPressed: () {
+            Get.to(const MainWrapper());
+            // Add your onPressed functionality here
+          },
+        ),
       ),
+      // automaticallyImplyLeading: true,
+      // foregroundColor: Colors.deepPurpleAccent,
       body: Padding(
         padding: const EdgeInsets.only(top: 50,right: 25,left: 25,bottom: 70),
         child: Stack(
