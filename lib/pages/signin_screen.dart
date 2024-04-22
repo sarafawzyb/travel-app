@@ -1,3 +1,5 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,8 +18,13 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+  String errorMessage = '';
+
   final _formSignInKey = GlobalKey<FormState>();
   bool rememberPassword = true;
+
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
@@ -58,6 +65,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         height: 40.0,
                       ),
                       TextFormField(
+                        controller: email,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter Email'.tr;
@@ -65,7 +73,10 @@ class _SignInScreenState extends State<SignInScreen> {
                           return null;
                         },
                         decoration: InputDecoration(
-                          label:  Text('Email'.tr),
+                          label: Text('Email'.tr),
+                          errorText: errorMessage.contains('email')
+                              ? errorMessage
+                              : null,
                           hintText: 'Enter Email'.tr,
                           hintStyle: const TextStyle(
                             color: Colors.black26,
@@ -88,6 +99,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         height: 25.0,
                       ),
                       TextFormField(
+                        controller: password,
                         obscureText: true,
                         obscuringCharacter: '*'.tr,
                         validator: (value) {
@@ -97,7 +109,10 @@ class _SignInScreenState extends State<SignInScreen> {
                           return null;
                         },
                         decoration: InputDecoration(
-                          label:  Text('Password'.tr),
+                          label: Text('Password'.tr),
+                          errorText: errorMessage.contains('password')
+                              ? errorMessage
+                              : null,
                           hintText: 'Enter Password'.tr,
                           hintStyle: const TextStyle(
                             color: Colors.black26,
@@ -133,7 +148,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                 },
                                 activeColor: lightColorScheme.primary,
                               ),
-                               Text(
+                              Text(
                                 'Remember me'.tr,
                                 style: const TextStyle(
                                   color: Colors.black45,
@@ -158,28 +173,67 @@ class _SignInScreenState extends State<SignInScreen> {
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
-                          onPressed: () {
-                            if (_formSignInKey.currentState!.validate() &&
-                                rememberPassword) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                 content: Text('Processing Data'.tr),
-                                ),
+                          onPressed: () async {
+                            try {
+                              final credential = await FirebaseAuth.instance
+                                  .signInWithEmailAndPassword(
+                                email: email.text,
+                                password: password.text,
                               );
-                              Get.to(const WelcomePage());
-                            } else if (!rememberPassword) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                 SnackBar(
-                                  content: Text(
-                                      'Please agree to the processing of personal data'.tr
-                                  ),
-                                ),
-                              );
+                              Navigator.of(context)
+                                  .pushReplacementNamed("homepage");
+                            } catch (e) {
+                              String errorMessage = 'An error occurred';
+                              if (e is FirebaseAuthException) {
+                                switch (e.code) {
+                                  case 'user-not-found':
+                                    errorMessage =
+                                        'No user found for that email.';
+                                    break;
+                                  case 'wrong-password':
+                                    errorMessage =
+                                        'Wrong password provided for that user.';
+                                    break;
+                                  // Handle other FirebaseAuthException codes if needed
+                                  default:
+                                    errorMessage = e.message ?? errorMessage;
+                                    break;
+                                }
+                              } else {
+                                errorMessage =
+                                    'An unexpected error occurred. Please try again later.';
+                              }
+                              print(errorMessage);
+                              // Show dialog
+                              AwesomeDialog(
+                                context: context,
+                                dialogType: DialogType.error,
+                                animType: AnimType.rightSlide,
+                                title: 'Error Title',
+                                desc: errorMessage,
+                              ).show();
                             }
                           },
-                          child:  Text('Sign in'.tr),
+                          child: Text('Sign in'.tr),
                         ),
                       ),
+                      // if (_formSignInKey.currentState!.validate() &&
+                      //     rememberPassword) {
+                      //   ScaffoldMessenger.of(context).showSnackBar(
+                      //     SnackBar(
+                      //      content: Text('Processing Data'.tr),
+                      //     ),
+                      //   );
+                      //   Get.to(const WelcomePage());
+                      // } else if (!rememberPassword) {
+                      //   ScaffoldMessenger.of(context).showSnackBar(
+                      //      SnackBar(
+                      //       content: Text(
+                      //           'Please agree to the processing of personal data'.tr
+                      //       ),
+                      //     ),
+                      //   );
+                      // }
                       const SizedBox(
                         height: 25.0,
                       ),
@@ -192,7 +246,7 @@ class _SignInScreenState extends State<SignInScreen> {
                               color: Colors.grey.withOpacity(0.5),
                             ),
                           ),
-                           Padding(
+                          Padding(
                             padding: const EdgeInsets.symmetric(
                               vertical: 0,
                               horizontal: 10,
@@ -239,7 +293,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                           Text(
+                          Text(
                             'Don\'t have an account?'.tr,
                             style: const TextStyle(
                               color: Colors.black45,
@@ -247,7 +301,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              Navigator.pushReplacement(
+                              Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (e) => const SignUpScreen(),

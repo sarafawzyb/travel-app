@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
@@ -14,8 +15,13 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  TextEditingController username = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+
   final _formSignupKey = GlobalKey<FormState>();
   bool agreePersonalData = true;
+
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
@@ -59,6 +65,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       // full name
                       TextFormField(
+                        controller: username,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter Full name'.tr;
@@ -66,7 +73,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           return null;
                         },
                         decoration: InputDecoration(
-                          label:  Text('Full Name'.tr),
+                          label: Text('Full Name'.tr),
                           hintText: 'Enter Full Name'.tr,
                           hintStyle: const TextStyle(
                             color: Colors.black26,
@@ -85,11 +92,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ),
                         ),
                       ),
+
                       const SizedBox(
                         height: 25.0,
                       ),
                       // email
                       TextFormField(
+                        controller: email,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter Email'.tr;
@@ -97,7 +106,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           return null;
                         },
                         decoration: InputDecoration(
-                          label:  Text('Email'.tr),
+                          label: Text('Email'.tr),
                           hintText: 'Enter Email'.tr,
                           hintStyle: const TextStyle(
                             color: Colors.black26,
@@ -121,6 +130,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       // password
                       TextFormField(
+                        controller: password,
                         obscureText: true,
                         obscuringCharacter: '*',
                         validator: (value) {
@@ -130,7 +140,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           return null;
                         },
                         decoration: InputDecoration(
-                          label:  Text('Password'.tr),
+                          label: Text('Password'.tr),
                           hintText: 'Enter Password'.tr,
                           hintStyle: const TextStyle(
                             color: Colors.black26,
@@ -164,7 +174,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             },
                             activeColor: lightColorScheme.primary,
                           ),
-                           Text(
+                          Text(
                             'I agree to the processing of'.tr,
                             style: TextStyle(
                               color: Colors.black45,
@@ -186,24 +196,42 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
-                          onPressed: () {
-                            if (_formSignupKey.currentState!.validate() &&
-                                agreePersonalData) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                 SnackBar(
-                                  content: Text('Processing Data'.tr),
-                                ),
+                          onPressed: () async {
+                            try {
+                              final credential = await FirebaseAuth.instance
+                                  .createUserWithEmailAndPassword(
+                                email: email.text,
+                                password: password.text,
                               );
-                              Get.to(const SignInScreen());
-                            } else if (!agreePersonalData) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                 SnackBar(
-                                    content: Text(
-                                        'Please agree to the processing of personal data'.tr)),
-                              );
+                              Navigator.of(context)
+                                  .pushReplacementNamed("homepage");
+                            } on FirebaseAuthException catch (e) {
+                              if (e.code == 'weak-password') {
+                                print('The password provided is too weak.');
+                              } else if (e.code == 'email-already-in-use') {
+                                print(
+                                    'The account already exists for that email.');
+                              }
+                            } catch (e) {
+                              print(e);
                             }
+                            // if (_formSignupKey.currentState!.validate() &&
+                            //     agreePersonalData) {
+                            //   ScaffoldMessenger.of(context).showSnackBar(
+                            //     SnackBar(
+                            //       content: Text('Processing Data'.tr),
+                            //     ),
+                            //   );
+                            //   // Get.to(const SignInScreen());
+                            // } else if (!agreePersonalData) {
+                            //   ScaffoldMessenger.of(context).showSnackBar(
+                            //     SnackBar(
+                            //         content: Text('Please agree to the processing of personal data'.tr)
+                            //     ),
+                            //   );
+                            // }
                           },
-                          child:  Text('Sign up'.tr),
+                          child: Text('Sign up'.tr),
                         ),
                       ),
                       const SizedBox(
@@ -219,7 +247,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               color: Colors.grey.withOpacity(0.5),
                             ),
                           ),
-                           Padding(
+                          Padding(
                             padding: EdgeInsets.symmetric(
                               vertical: 0,
                               horizontal: 10,
@@ -267,7 +295,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                           Text(
+                          Text(
                             'Already have an account?'.tr,
                             style: TextStyle(
                               color: Colors.black45,

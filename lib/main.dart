@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:travel_app/local/locale.dart';
 import 'package:travel_app/local/locale_controller.dart';
-import 'package:travel_app/pages/places.dart';
+import 'package:travel_app/pages/home_page.dart';
+import 'package:travel_app/pages/signin_screen.dart';
+import 'package:travel_app/pages/signup_screen.dart';
+// import 'package:travel_app/pages/places.dart';
 import 'package:travel_app/pages/welcome_screen.dart';
 import 'firebase_options.dart';
 
@@ -23,6 +26,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(MyLocaleController());
+
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
@@ -32,7 +36,12 @@ class MyApp extends StatelessWidget {
       ),
       locale: Get.deviceLocale,
       translations: MyLocale(),
-      home: const TravelPlacesPage(),
+      home: FirebaseAuth.instance.currentUser == null? WelcomeScreen(): HomePage(),
+      routes: {
+        "signup": (context) => const SignUpScreen(),
+        "login": (context) => const SignInScreen(),
+        "homepage": (context) => const HomePage()
+      },
     );
   }
 }
@@ -56,19 +65,19 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
-  void initState(){
-    FirebaseAuth.instance
-        .authStateChanges()
-        .listen((User? user) {
+  void initState() {
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user == null) {
-        print('====================================User is currently signed out!');
+        print(
+            '====================================User is currently signed out!');
       } else {
         print('====================================User is signed in!');
       }
     });
+    super.initState();
   }
+
   int _counter = 0;
 
   void _incrementCounter() {

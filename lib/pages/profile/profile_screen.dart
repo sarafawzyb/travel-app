@@ -1,12 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:travel_app/local/locale_controller.dart';
 import 'package:travel_app/pages/home_page.dart';
 import 'package:travel_app/pages/profile/widget/profile_menu.dart';
-
 import '../../widget/coming_soon.dart';
 import '../signin_screen.dart';
 
@@ -212,8 +210,9 @@ class ProfileScreen extends StatelessWidget {
                 icon: LineAwesomeIcons.alternate_sign_out,
                 textColor: Colors.red,
                 endIcon: false,
-                onPress: () {
-                  Get.to(SignInScreen());
+                onPress: () async {
+                  await FirebaseAuth.instance.signOut();
+                  Navigator.of(context).pushNamedAndRemoveUntil("login", (route) => false);
                 },
               ),
             ],
