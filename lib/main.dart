@@ -6,6 +6,7 @@ import 'package:travel_app/local/locale.dart';
 import 'package:travel_app/local/locale_controller.dart';
 import 'package:travel_app/pages/signin_screen.dart';
 import 'package:travel_app/pages/signup_screen.dart';
+import 'package:travel_app/pages/welcome_page.dart';
 import 'package:travel_app/pages/welcome_screen.dart';
 import 'firebase_options.dart';
 import 'nav_pages.dart/main_wrapper.dart';
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
       routes: {
         "signup": (context) => const SignUpScreen(),
         "login": (context) => const SignInScreen(),
-        "homepage": (context) => const MainWrapper()
+        "homepage": (context) => const WelcomePage()
       },
     );
   }

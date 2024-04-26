@@ -20,6 +20,26 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+  final List<String> cities = [
+    "New York",
+    "Los Angeles",
+    "Chicago",
+    "Houston",
+    "Phoenix",
+    // Add more cities as needed
+  ];
+
+  String _searchQuery = "";
+  List<String> filteredCities = [];
+
+  void searchAndFilter(String query) {
+    filteredCities.clear();
+    if (query.isNotEmpty) {
+      filteredCities.addAll(cities
+          .where((city) => city.toLowerCase().contains(query.toLowerCase())));
+    }
+  }
+
   late final TabController tabController;
   final EdgeInsetsGeometry padding =
       const EdgeInsets.symmetric(horizontal: 10.0);
@@ -55,7 +75,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 children: [
                   FadeInUp(
                     delay: const Duration(milliseconds: 300),
-                    child:  AppText(
+                    child: AppText(
                       text: "Top Tours".tr,
                       size: 35,
                       color: Colors.black,
@@ -64,7 +84,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   ),
                   FadeInUp(
                     delay: const Duration(milliseconds: 400),
-                    child:  AppText(
+                    child: AppText(
                       text: "For Your Request".tr,
                       size: 24,
                       color: Colors.black,
@@ -77,6 +97,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       padding: EdgeInsets.only(
                           bottom: size.height * 0.01, top: size.height * 0.02),
                       child: TextField(
+                        onChanged: (value) {
+                          setState(() {
+                            _searchQuery = value;
+                            searchAndFilter(_searchQuery);
+                          });
+                        },
                         style: GoogleFonts.ubuntu(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
@@ -88,14 +114,18 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           filled: true,
                           fillColor: const Color.fromARGB(255, 240, 240, 240),
                           prefixIcon: IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              searchAndFilter(_searchQuery);
+                            },
                             icon: const Icon(
                               Icons.search,
                               color: Colors.black,
                             ),
                           ),
                           suffixIcon: IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              searchAndFilter(_searchQuery);
+                            },
                             icon: const Icon(
                               Icons.filter_alt_outlined,
                               color: Colors.grey,
@@ -115,6 +145,17 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       ),
                     ),
                   ),
+                  // Expanded(
+                  //   child: ListView.builder(
+                  //     itemCount: filteredCities.length,
+                  //     itemBuilder: (BuildContext context, int index) {
+                  //       return ListTile(
+                  //         title: Text(filteredCities[index]),
+                  //         // Add more ListTile properties as needed
+                  //       );
+                  //     },
+                  //   ),
+                  // ),
                   FadeInUp(
                     delay: const Duration(milliseconds: 600),
                     child: Container(
@@ -137,7 +178,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             color: Colors.deepPurpleAccent,
                             radius: 4,
                           ),
-                          tabs:  [
+                          tabs: [
                             Tab(
                               text: "Places".tr,
                             ),
@@ -168,7 +209,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   ),
                   FadeInUp(
                       delay: const Duration(milliseconds: 800),
-                      child:  MiddleAppText(text: "Find More".tr)),
+                      child: MiddleAppText(text: "Find More".tr)),
                   FadeInUp(
                     delay: const Duration(milliseconds: 900),
                     child: Container(
@@ -217,7 +258,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   ),
                   FadeInUp(
                       delay: const Duration(milliseconds: 1000),
-                      child:  MiddleAppText(text: "People Also Like".tr)),
+                      child: MiddleAppText(text: "People Also Like".tr)),
                   FadeInUp(
                     delay: const Duration(milliseconds: 1100),
                     child: Container(

@@ -4,10 +4,9 @@ import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:travel_app/local/locale_controller.dart';
 import 'package:travel_app/nav_pages.dart/main_wrapper.dart';
-import 'package:travel_app/pages/home_page.dart';
 import 'package:travel_app/pages/profile/widget/profile_menu.dart';
 import '../../widget/coming_soon.dart';
-import '../signin_screen.dart';
+
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -23,12 +22,13 @@ class ProfileScreen extends StatelessWidget {
               Get.to(const MainWrapper());
             },
             icon: Icon(
-              LineAwesomeIcons.angle_left,
+              Icons.arrow_back_ios,
+              color: Colors.deepPurpleAccent,
             ),
           ),
           title: Text(
             "Profile".tr,
-            style: Theme.of(context).textTheme.headline4,
+            style: Theme.of(context).textTheme.headlineMedium,
           )),
       body: SingleChildScrollView(
         child: Container(
@@ -69,10 +69,10 @@ class ProfileScreen extends StatelessWidget {
               ),
               Text(
                 "Sara Mohamed".tr,
-                style: Theme.of(context).textTheme.headline4,
+                style: Theme.of(context).textTheme.headlineMedium,
               ),
               Text("saramohmed50@gmail.com",
-                  style: Theme.of(context).textTheme.bodyText2),
+                  style: Theme.of(context).textTheme.bodyMedium),
               const SizedBox(
                 height: 20,
               ),
@@ -105,13 +105,13 @@ class ProfileScreen extends StatelessWidget {
                   Get.to(const ComingSoon());
                 },
               ),
-              ProfileMenuWidget(
-                title: "Address".tr,
-                icon: Icons.add_location_alt_outlined,
-                onPress: () {
-                  Get.to(const ComingSoon());
-                },
-              ),
+              // ProfileMenuWidget(
+              //   title: "Address".tr,
+              //   icon: Icons.add_location_alt_outlined,
+              //   onPress: () {
+              //     Get.to(const ComingSoon());
+              //   },
+              // ),
               ProfileMenuWidget(
                 title: "User Management".tr,
                 icon: LineAwesomeIcons.user_check,
@@ -139,7 +139,7 @@ class ProfileScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Image.asset(
-                            "assets/images/mylogo.png",
+                            "assets/images/translate.png",
                             height: 150,
                             width: 600,
                           ),

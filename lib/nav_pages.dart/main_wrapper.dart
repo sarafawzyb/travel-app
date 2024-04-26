@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app/pages/places.dart';
 import 'package:water_drop_nav_bar/water_drop_nav_bar.dart';
-
 import '../pages/profile/profile_screen.dart';
 import 'favorite.dart';
 import '../pages/home_page.dart';
