@@ -2,15 +2,17 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:travel_app/pages/category_pages/beach_page.dart';
 import 'package:travel_app/pages/profile/profile_screen.dart';
-import '../models/category_model.dart';
 import '../models/people_also_like_model.dart';
 import '../pages/details_page.dart';
-import '../widget/coming_soon.dart';
 import '../widget/reuseable_text.dart';
 import '../models/tab_bar_model.dart';
 import '../widget/painter.dart';
 import '../widget/reuseabale_middle_app_text.dart';
+import 'category_pages/boat_page.dart';
+import 'category_pages/lake_page.dart';
+import 'category_pages/museum_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,6 +20,51 @@ class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() => _HomePageState();
 }
+
+class Category {
+  final String name;
+  final String imagePath;
+  final VoidCallback onTap;
+
+  Category({
+    required this.name,
+    required this.imagePath,
+    required this.onTap,
+  });
+}
+
+List<Category> categories = [
+  Category(
+      name: "Beach",
+      imagePath: "assets/images/beach.png",
+      onTap: () {
+        Get.to(BeachPlacesPage());
+      }),
+  Category(
+      name: "Boat",
+      imagePath: "assets/images/boat.png",
+      onTap: () {
+        Get.to(BoatPlacesPage());
+      }),
+  Category(
+      name: "Museum",
+      imagePath: "assets/images/museum.png",
+      onTap: () {
+        Get.to(MuseumPlacesPage());
+      }),
+  Category(
+      name: "Lake",
+      imagePath: "assets/images/lake.png",
+      onTap: () {
+        Get.to(LakePlacesPage());
+      }),
+  // Category(
+  //     name: "Tricycle",
+  //     imagePath: "assets/images/tricycle.png",
+  //     onTap: () {
+  //       Get.to(TricyclePlacesPage());
+  //     }),
+];
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   final List<String> cities = [
@@ -115,7 +162,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           fillColor: const Color.fromARGB(255, 240, 240, 240),
                           prefixIcon: IconButton(
                             onPressed: () {
-                              searchAndFilter(_searchQuery);
+                              // searchAndFilter(_searchQuery);
                             },
                             icon: const Icon(
                               Icons.search,
@@ -124,7 +171,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           ),
                           suffixIcon: IconButton(
                             onPressed: () {
-                              searchAndFilter(_searchQuery);
+                              // searchAndFilter(_searchQuery);
                             },
                             icon: const Icon(
                               Icons.filter_alt_outlined,
@@ -217,43 +264,31 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       width: size.width,
                       height: size.height * 0.12,
                       child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: categoryComponents.length,
-                          physics: const BouncingScrollPhysics(),
-                          itemBuilder: (context, index) {
-                            Category current = categoryComponents[index];
-                            return Column(
-                              children: [
-                                GestureDetector(
-                                  onTap: (() => Get.to(const ComingSoon())),
-                                  child: Container(
-                                    margin: const EdgeInsets.all(10.0),
-                                    width: size.width * 0.16,
-                                    height: size.height * 0.07,
-                                    decoration: BoxDecoration(
-                                      color: Colors.deepPurpleAccent
-                                          .withOpacity(0.2),
-                                      borderRadius: BorderRadius.circular(15),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(20.0),
-                                      child: Image(
-                                        image: AssetImage(
-                                          current.image,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
+                        scrollDirection: Axis.horizontal,
+                        itemCount: categories.length,
+                        itemBuilder: (context, index) {
+                          return Container(
+                            margin: const EdgeInsets.all(10.0),
+                            width: size.width * 0.16,
+                            height: size.height * 0.07,
+                            decoration: BoxDecoration(
+                              color: Colors.deepPurpleAccent.withOpacity(0.2),
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: GestureDetector(
+                                onTap: () {
+                                  categories[index].onTap();
+                                },
+                                child: CategoryWidget(
+                                  category: categories[index],
                                 ),
-                                AppText(
-                                  text: current.name,
-                                  size: 14,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w400,
-                                )
-                              ],
-                            );
-                          }),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
                     ),
                   ),
                   FadeInUp(
@@ -397,6 +432,40 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             )
           ],
         ),
+      ),
+    );
+  }
+}
+
+class CategoryWidget extends StatelessWidget {
+  final Category category;
+
+  const CategoryWidget({super.key, required this.category});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 80,
+      child: Column(
+        children: [
+          Container(
+            width: 20,
+            height: 20,
+            decoration: BoxDecoration(
+              //color: Colors.black12,
+              borderRadius: BorderRadius.circular(10),
+              image: DecorationImage(
+                image: AssetImage(category.imagePath),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          SizedBox(height: 8),
+          Text(
+            category.name,
+            style: TextStyle(fontSize: 12),
+          ),
+        ],
       ),
     );
   }

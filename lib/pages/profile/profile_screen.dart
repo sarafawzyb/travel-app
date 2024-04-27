@@ -16,19 +16,22 @@ class ProfileScreen extends StatelessWidget {
     MyLocaleController controllerLang = Get.find() ;
     return Scaffold(
       appBar: AppBar(
-          titleSpacing: 100,
-          leading: IconButton(
-            onPressed: () {
-              Get.to(const MainWrapper());
-            },
-            icon: Icon(
-              Icons.arrow_back_ios,
-              color: Colors.deepPurpleAccent,
+        automaticallyImplyLeading: false,
+          // titleSpacing: 100,
+          // leading: IconButton(
+          //   onPressed: () {
+          //     Get.to(const MainWrapper());
+          //   },
+          //   icon: Icon(
+          //     Icons.arrow_back_ios,
+          //     color: Colors.deepPurpleAccent,
+          //   ),
+          // ),
+          title: Center(
+            child: Text(
+              "Profile".tr,
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
-          ),
-          title: Text(
-            "Profile".tr,
-            style: Theme.of(context).textTheme.headlineMedium,
           )),
       body: SingleChildScrollView(
         child: Container(

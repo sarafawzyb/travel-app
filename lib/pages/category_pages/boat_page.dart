@@ -6,14 +6,14 @@ import 'package:travel_app/nav_pages.dart/main_wrapper.dart';
 
 
 // Define a class to represent a travel place
-class TricyclePlaces {
+class BoatPlaces {
   final String name;
   final String address;
   final double rating;
   final String image;
   final VoidCallback onTap;
 
-  TricyclePlaces({
+  BoatPlaces({
     required this.name,
     required this.address,
     required this.rating,
@@ -23,52 +23,36 @@ class TricyclePlaces {
 }
 
 // Sample list of travel places
-List<TricyclePlaces> travelPlaces = [
-  TricyclePlaces(
-      name: "Sewa Lake".tr,
-      address: "Marsa Matrouh".tr,
+List<BoatPlaces> travelPlaces = [
+  BoatPlaces(
+      name: "Anakob".tr,
+      address: "Aswan".tr,
       rating: 4.7,
-      image: "assets/images/sewa.jpg",
+      image: "assets/images/download.jpg",
       onTap: () {
         // Get.to(DestinationPage3());
       }),
-  TricyclePlaces(
-      name: "Prince Mohamed Ali Palace".tr,
-      address: "Old Cairo".tr,
+  BoatPlaces(
+      name: "River Boat".tr,
+      address: "Cairo".tr,
       rating: 4.7,
-      image: "assets/images/manial-palace.jpg",
+      image: "assets/images/boat.jpg",
       onTap: () {
         //  Get.to(DestinationPage());
       }),
-  TricyclePlaces(
-      name: "Karnak Temple".tr,
-      address: "Luxor".tr,
+  BoatPlaces(
+      name: "Four Seasons Boat ".tr,
+      address: "Cairo".tr,
       rating: 4.7,
-      image: "assets/images/Karnak.jpg",
-      onTap: () {
-        //  Get.to(DestinationPage());
-      }),
-  TricyclePlaces(
-      name: "Karnak Temple".tr,
-      address: "Luxor".tr,
-      rating: 4.7,
-      image: "assets/images/Karnak.jpg",
-      onTap: () {
-        //  Get.to(DestinationPage());
-      }),
-  TricyclePlaces(
-      name: "Karnak Temple".tr,
-      address: "Luxor".tr,
-      rating: 4.7,
-      image: "assets/images/Karnak.jpg",
+      image: "assets/images/download (1).jpg",
       onTap: () {
         //  Get.to(DestinationPage());
       }),
   // Add more travel places as needed
 ];
 
-class TravelPlacesPage extends StatelessWidget {
-  const TravelPlacesPage({Key? key});
+class BoatPlacesPage extends StatelessWidget {
+  const BoatPlacesPage({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -77,11 +61,11 @@ class TravelPlacesPage extends StatelessWidget {
         automaticallyImplyLeading: true,
         backgroundColor: Colors.deepPurpleAccent,
         foregroundColor: Colors.white,
-        title: Text('Tricycle Places'.tr),
+        title: Text('Boat Places'.tr),
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios), // You can use any icon here
           onPressed: () {
-            Get.to(const MainWrapper());
+            Get.to(MainWrapper());
             // Add your onPressed functionality here
           },
         ),

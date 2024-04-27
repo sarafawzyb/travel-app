@@ -11,17 +11,17 @@ class Bar extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
         appBar: AppBar(
-        automaticallyImplyLeading: true,
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.deepPurpleAccent,
         foregroundColor: Colors.white,
-        title: Text('Favorite'.tr),
-    leading: IconButton(
-    icon: Icon(Icons.arrow_back_ios), // You can use any icon here
-    onPressed: () {
-    Get.to(const MainWrapper());
-    // Add your onPressed functionality here
-    },
-    ),
+        title: Center(child: Text('Favorite'.tr)),
+    // leading: IconButton(
+    // icon: Icon(Icons.arrow_back_ios), // You can use any icon here
+    // onPressed: () {
+    // Get.to(const MainWrapper());
+    // // Add your onPressed functionality here
+    // },
+    // ),
     ),
       body: Center(
       child: Column(

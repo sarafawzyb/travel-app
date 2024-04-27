@@ -25,10 +25,10 @@ class MuseumPlaces {
 // Sample list of travel places
 List<MuseumPlaces> travelPlaces = [
   MuseumPlaces(
-      name: "Baron Palace".tr,
+      name: "The Egyptian".tr,
       address: "Cairo".tr,
       rating: 4.7,
-      image: "assets/images/baron.jpg",
+      image: "assets/images/Egyptian.jpg",
       onTap: () {
         // Get.to(DestinationPage1());
       }),
@@ -41,15 +41,15 @@ List<MuseumPlaces> travelPlaces = [
         //  Get.to(DestinationPage());
       }),
   MuseumPlaces(
-      name: "Karnak Temple".tr,
-      address: "Luxor".tr,
+      name: "Museum of Islamic Art".tr,
+      address: "Cairo".tr,
       rating: 4.7,
-      image: "assets/images/Karnak.jpg",
+      image: "assets/images/Islamic.jpg",
       onTap: () {
         //  Get.to(DestinationPage());
       }),
   MuseumPlaces(
-      name: "Karnak Temple".tr,
+      name: "Abdeen Palace".tr,
       address: "Luxor".tr,
       rating: 4.7,
       image: "assets/images/Karnak.jpg",
@@ -67,8 +67,8 @@ List<MuseumPlaces> travelPlaces = [
     // Add more travel places as needed
 ];
 
-class TravelPlacesPage extends StatelessWidget {
-  const TravelPlacesPage({Key? key});
+class MuseumPlacesPage extends StatelessWidget {
+  const MuseumPlacesPage({Key? key});
 
   @override
   Widget build(BuildContext context) {

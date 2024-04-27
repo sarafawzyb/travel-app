@@ -33,42 +33,34 @@ List<LakePlaces> travelPlaces = [
         // Get.to(DestinationPage3());
       }),
   LakePlaces(
-      name: "Prince Mohamed Ali Palace".tr,
-      address: "Old Cairo".tr,
+      name: "Lake Nasser".tr,
+      address: "Aswan".tr,
       rating: 4.7,
-      image: "assets/images/manial-palace.jpg",
+      image: "assets/images/Lake_Nasser_Vista.jpg",
       onTap: () {
         //  Get.to(DestinationPage());
       }),
   LakePlaces(
-      name: "Karnak Temple".tr,
-      address: "Luxor".tr,
+      name: "The Wadi Al Rayan Lakes".tr,
+      address: "Fayoum".tr,
       rating: 4.7,
-      image: "assets/images/Karnak.jpg",
+      image: "assets/images/Rayan.jpg",
       onTap: () {
         //  Get.to(DestinationPage());
       }),
   LakePlaces(
-      name: "Karnak Temple".tr,
-      address: "Luxor".tr,
+      name: "Magic Lake".tr,
+      address: "Fayoum".tr,
       rating: 4.7,
-      image: "assets/images/Karnak.jpg",
-      onTap: () {
-        //  Get.to(DestinationPage());
-      }),
-  LakePlaces(
-      name: "Karnak Temple".tr,
-      address: "Luxor".tr,
-      rating: 4.7,
-      image: "assets/images/Karnak.jpg",
+      image: "assets/images/fayoum.jpg",
       onTap: () {
         //  Get.to(DestinationPage());
       }),
   // Add more travel places as needed
 ];
 
-class TravelPlacesPage extends StatelessWidget {
-  const TravelPlacesPage({Key? key});
+class LakePlacesPage extends StatelessWidget {
+  const LakePlacesPage({Key? key});
 
   @override
   Widget build(BuildContext context) {
