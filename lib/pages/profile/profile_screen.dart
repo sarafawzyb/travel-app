@@ -3,20 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:travel_app/local/locale_controller.dart';
-import 'package:travel_app/nav_pages.dart/main_wrapper.dart';
 import 'package:travel_app/pages/profile/widget/profile_menu.dart';
 import '../../widget/coming_soon.dart';
-
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    MyLocaleController controllerLang = Get.find() ;
+    MyLocaleController controllerLang = Get.find();
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+          automaticallyImplyLeading: false,
           // titleSpacing: 100,
           // leading: IconButton(
           //   onPressed: () {
@@ -83,7 +81,7 @@ class ProfileScreen extends StatelessWidget {
                 width: 200,
                 child: ElevatedButton(
                   //onPressed: () => Get.to(() => const ComingSoon()),
-                  child:  Text("Edit Profile".tr,
+                  child: Text("Edit Profile".tr,
                       style: TextStyle(color: Colors.white)),
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.deepPurpleAccent,
@@ -135,8 +133,8 @@ class ProfileScreen extends StatelessWidget {
                     builder: (context) => Container(
                       clipBehavior: Clip.antiAlias,
                       decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.vertical(
-                              top: Radius.circular(30))),
+                          borderRadius:
+                              BorderRadius.vertical(top: Radius.circular(30))),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -152,7 +150,7 @@ class ProfileScreen extends StatelessWidget {
                                 backgroundColor: Colors.deepPurpleAccent,
                                 padding: const EdgeInsets.only(
                                     right: 120, left: 120) // foreground
-                            ),
+                                ),
                             onPressed: () {
                               controllerLang.changeLang("en");
                               Get.forceAppUpdate();
@@ -170,7 +168,7 @@ class ProfileScreen extends StatelessWidget {
                                 backgroundColor: Colors.deepPurpleAccent,
                                 padding: const EdgeInsets.only(
                                     right: 120, left: 120) // foreground
-                            ),
+                                ),
                             onPressed: () {
                               controllerLang.changeLang("ar");
                               Get.forceAppUpdate();
@@ -188,7 +186,7 @@ class ProfileScreen extends StatelessWidget {
                                 backgroundColor: Colors.deepPurpleAccent,
                                 padding: const EdgeInsets.only(
                                     right: 120, left: 120) // foreground
-                            ),
+                                ),
                             onPressed: () {
                               controllerLang.changeLang("ru");
                               Get.forceAppUpdate();
@@ -216,7 +214,8 @@ class ProfileScreen extends StatelessWidget {
                 endIcon: false,
                 onPress: () async {
                   await FirebaseAuth.instance.signOut();
-                  Navigator.of(context).pushNamedAndRemoveUntil("login", (route) => false);
+                  Navigator.of(context)
+                      .pushNamedAndRemoveUntil("login", (route) => false);
                 },
               ),
             ],

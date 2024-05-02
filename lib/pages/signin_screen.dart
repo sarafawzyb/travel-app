@@ -4,8 +4,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:travel_app/pages/signup_screen.dart';
-import 'package:travel_app/pages/welcome_page.dart';
-
 import '../theme/theme.dart';
 import '../widget/custom_scaffold.dart';
 

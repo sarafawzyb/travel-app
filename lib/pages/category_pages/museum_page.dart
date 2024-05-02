@@ -3,8 +3,6 @@ import 'package:get/get.dart';
 import 'package:travel_app/nav_pages.dart/main_wrapper.dart';
 // import 'baron_page.dart';
 
-
-
 // Define a class to represent a travel place
 class MuseumPlaces {
   final String name;
@@ -25,7 +23,7 @@ class MuseumPlaces {
 // Sample list of travel places
 List<MuseumPlaces> travelPlaces = [
   MuseumPlaces(
-      name: "The Egyptian".tr,
+      name: "The Egyptian Museum".tr,
       address: "Cairo".tr,
       rating: 4.7,
       image: "assets/images/Egyptian.jpg",
@@ -50,21 +48,14 @@ List<MuseumPlaces> travelPlaces = [
       }),
   MuseumPlaces(
       name: "Abdeen Palace".tr,
-      address: "Luxor".tr,
+      address: "Cairo".tr,
       rating: 4.7,
-      image: "assets/images/Karnak.jpg",
+      image: "assets/images/abdeen.jpg",
       onTap: () {
         //  Get.to(DestinationPage());
       }),
-  MuseumPlaces(
-      name: "Karnak Temple".tr,
-      address: "Luxor".tr,
-      rating: 4.7,
-      image: "assets/images/Karnak.jpg",
-      onTap: () {
-        //  Get.to(DestinationPage());
-      }),
-    // Add more travel places as needed
+
+  // Add more travel places as needed
 ];
 
 class MuseumPlacesPage extends StatelessWidget {
@@ -115,14 +106,15 @@ class MuseumPlacesPage extends StatelessWidget {
                     // Name, address, and rating on the right
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.only(
-                            top: 15, right: 8, left: 10),
+                        padding:
+                            const EdgeInsets.only(top: 15, right: 8, left: 10),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               travelPlaces[index].name,
-                              style: const TextStyle(fontWeight: FontWeight.bold),
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold),
                             ),
                             const SizedBox(height: 10),
                             Text(
@@ -134,8 +126,8 @@ class MuseumPlacesPage extends StatelessWidget {
                               children: [
                                 Text(
                                   'Rating:'.tr,
-                                  style:
-                                  const TextStyle(fontWeight: FontWeight.bold),
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 const Icon(
                                   Icons.star,

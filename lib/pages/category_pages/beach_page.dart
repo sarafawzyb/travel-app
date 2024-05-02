@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:travel_app/nav_pages.dart/main_wrapper.dart';
 
-
-
-
 // Define a class to represent a travel place
 class BeachPlaces {
   final String name;
@@ -25,6 +22,30 @@ class BeachPlaces {
 // Sample list of travel places
 List<BeachPlaces> travelPlaces = [
   BeachPlaces(
+      name: "Hurghada".tr,
+      address: "Hurghada".tr,
+      rating: 4.7,
+      image: "assets/images/hurghada.jpg",
+      onTap: () {
+        // Get.to(DestinationPage3());
+      }),
+  BeachPlaces(
+      name: "Sharm El-Sheikh".tr,
+      address: "Sharm El-Sheikh".tr,
+      rating: 4.7,
+      image: "assets/images/sharm.jpg",
+      onTap: () {
+        //  Get.to(DestinationPage());
+      }),
+  BeachPlaces(
+      name: "Marsa Alam".tr,
+      address: "Marsa Alam".tr,
+      rating: 4.7,
+      image: "assets/images/marsa.jpg",
+      onTap: () {
+        //  Get.to(DestinationPage());
+      }),
+  BeachPlaces(
       name: "Sewa Lake".tr,
       address: "Marsa Matrouh".tr,
       rating: 4.7,
@@ -32,38 +53,7 @@ List<BeachPlaces> travelPlaces = [
       onTap: () {
         // Get.to(DestinationPage3());
       }),
-  BeachPlaces(
-      name: "Prince Mohamed Ali Palace".tr,
-      address: "Old Cairo".tr,
-      rating: 4.7,
-      image: "assets/images/manial-palace.jpg",
-      onTap: () {
-        //  Get.to(DestinationPage());
-      }),
-  BeachPlaces(
-      name: "Karnak Temple".tr,
-      address: "Luxor".tr,
-      rating: 4.7,
-      image: "assets/images/Karnak.jpg",
-      onTap: () {
-        //  Get.to(DestinationPage());
-      }),
-  BeachPlaces(
-      name: "Karnak Temple".tr,
-      address: "Luxor".tr,
-      rating: 4.7,
-      image: "assets/images/Karnak.jpg",
-      onTap: () {
-        //  Get.to(DestinationPage());
-      }),
-  BeachPlaces(
-      name: "Karnak Temple".tr,
-      address: "Luxor".tr,
-      rating: 4.7,
-      image: "assets/images/Karnak.jpg",
-      onTap: () {
-        //  Get.to(DestinationPage());
-      }),
+
   // Add more travel places as needed
 ];
 
@@ -77,7 +67,7 @@ class BeachPlacesPage extends StatelessWidget {
         automaticallyImplyLeading: true,
         backgroundColor: Colors.deepPurpleAccent,
         foregroundColor: Colors.white,
-        title: Text('Tricycle Places'.tr),
+        title: Text('Beach Places'.tr),
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios), // You can use any icon here
           onPressed: () {
@@ -115,14 +105,15 @@ class BeachPlacesPage extends StatelessWidget {
                     // Name, address, and rating on the right
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.only(
-                            top: 15, right: 8, left: 10),
+                        padding:
+                            const EdgeInsets.only(top: 15, right: 8, left: 10),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               travelPlaces[index].name,
-                              style: const TextStyle(fontWeight: FontWeight.bold),
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold),
                             ),
                             const SizedBox(height: 10),
                             Text(
@@ -134,8 +125,8 @@ class BeachPlacesPage extends StatelessWidget {
                               children: [
                                 Text(
                                   'Rating:'.tr,
-                                  style:
-                                  const TextStyle(fontWeight: FontWeight.bold),
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 const Icon(
                                   Icons.star,

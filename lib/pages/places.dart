@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:travel_app/nav_pages.dart/main_wrapper.dart';
 import 'package:travel_app/pages/saint_catherine.dart';
 import 'package:travel_app/pages/sewa_lake.dart';
 import 'alexandria_library.dart';
 import 'baron_page.dart';
 import 'details_place.dart';
-
 
 // Define a class to represent a travel place
 class TravelPlace {
@@ -41,7 +39,7 @@ List<TravelPlace> travelPlaces = [
       rating: 4.7,
       image: "assets/images/baron.jpg",
       onTap: () {
-       Get.to(DestinationPage1());
+        Get.to(DestinationPage1());
       }),
   TravelPlace(
       name: "Alexandria Library".tr,
@@ -49,7 +47,7 @@ List<TravelPlace> travelPlaces = [
       rating: 4.7,
       image: "assets/images/liberary.jpg",
       onTap: () {
-       Get.to(DestinationPage2());
+        Get.to(DestinationPage2());
       }),
   TravelPlace(
       name: "Sewa Lake".tr,
@@ -57,7 +55,7 @@ List<TravelPlace> travelPlaces = [
       rating: 4.7,
       image: "assets/images/sewa.jpg",
       onTap: () {
-       Get.to(DestinationPage3());
+        Get.to(DestinationPage3());
       }),
   TravelPlace(
       name: "Saint Catherine".tr,
@@ -65,7 +63,7 @@ List<TravelPlace> travelPlaces = [
       rating: 4.7,
       image: "assets/images/Catherine.jpg",
       onTap: () {
-       Get.to(DestinationPage4());
+        Get.to(DestinationPage4());
       }),
   TravelPlace(
       name: "Valley of the Kings".tr,
@@ -73,7 +71,7 @@ List<TravelPlace> travelPlaces = [
       rating: 4.7,
       image: "assets/images/Valley of the Kings.jpg",
       onTap: () {
-      //  Get.to(DestinationPage());
+        //  Get.to(DestinationPage());
       }),
   TravelPlace(
       name: "Prince Mohamed Ali Palace".tr,
@@ -81,7 +79,7 @@ List<TravelPlace> travelPlaces = [
       rating: 4.7,
       image: "assets/images/manial-palace.jpg",
       onTap: () {
-      //  Get.to(DestinationPage());
+        //  Get.to(DestinationPage());
       }),
   TravelPlace(
       name: "Karnak Temple".tr,
@@ -89,7 +87,7 @@ List<TravelPlace> travelPlaces = [
       rating: 4.7,
       image: "assets/images/Karnak.jpg",
       onTap: () {
-      //  Get.to(DestinationPage());
+        //  Get.to(DestinationPage());
       }),
   TravelPlace(
       name: "Cairo Tower".tr,
@@ -97,7 +95,7 @@ List<TravelPlace> travelPlaces = [
       rating: 4.7,
       image: "assets/images/cairo-tower.jpg",
       onTap: () {
-       // Get.to(DestinationPage());
+        // Get.to(DestinationPage());
       }),
   TravelPlace(
       name: "Amr Ibn al'As mosque".tr,
@@ -105,7 +103,7 @@ List<TravelPlace> travelPlaces = [
       rating: 4.7,
       image: "assets/images/gam3.jpg",
       onTap: () {
-      //  Get.to(DestinationPage());
+        //  Get.to(DestinationPage());
       }),
   // Add more travel places as needed
 ];
@@ -121,13 +119,13 @@ class TravelPlacesPage extends StatelessWidget {
         backgroundColor: Colors.deepPurpleAccent,
         foregroundColor: Colors.white,
         title: Center(child: Text('Travel Places'.tr)),
-      //   leading: IconButton(
-      //     // icon: Icon(Icons.arrow_back_ios), // You can use any icon here
-      //     // onPressed: () {
-      //     //   Get.to(const MainWrapper());
-      //     //   // Add your onPressed functionality here
-      //     // },
-      //   // ),
+        //   leading: IconButton(
+        //     // icon: Icon(Icons.arrow_back_ios), // You can use any icon here
+        //     // onPressed: () {
+        //     //   Get.to(const MainWrapper());
+        //     //   // Add your onPressed functionality here
+        //     // },
+        //   // ),
       ),
       body: ListView.builder(
         itemCount: travelPlaces.length,
@@ -158,14 +156,15 @@ class TravelPlacesPage extends StatelessWidget {
                     // Name, address, and rating on the right
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.only(
-                            top: 15, right: 8, left: 10),
+                        padding:
+                            const EdgeInsets.only(top: 15, right: 8, left: 10),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               travelPlaces[index].name,
-                              style: const TextStyle(fontWeight: FontWeight.bold),
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold),
                             ),
                             const SizedBox(height: 10),
                             Text(
@@ -177,8 +176,8 @@ class TravelPlacesPage extends StatelessWidget {
                               children: [
                                 Text(
                                   'Rating:'.tr,
-                                  style:
-                                  const TextStyle(fontWeight: FontWeight.bold),
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 const Icon(
                                   Icons.star,

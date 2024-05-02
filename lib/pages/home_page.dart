@@ -1,9 +1,13 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:travel_app/pages/baron_page.dart';
 import 'package:travel_app/pages/category_pages/beach_page.dart';
+import 'package:travel_app/pages/places.dart';
 import 'package:travel_app/pages/profile/profile_screen.dart';
+import 'package:travel_app/widget/coming_soon.dart';
 import '../models/people_also_like_model.dart';
 import '../pages/details_page.dart';
 import '../widget/reuseable_text.dart';
@@ -67,25 +71,8 @@ List<Category> categories = [
 ];
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
-  final List<String> cities = [
-    "New York",
-    "Los Angeles",
-    "Chicago",
-    "Houston",
-    "Phoenix",
-    // Add more cities as needed
-  ];
-
   String _searchQuery = "";
   List<String> filteredCities = [];
-
-  void searchAndFilter(String query) {
-    filteredCities.clear();
-    if (query.isNotEmpty) {
-      filteredCities.addAll(cities
-          .where((city) => city.toLowerCase().contains(query.toLowerCase())));
-    }
-  }
 
   late final TabController tabController;
   final EdgeInsetsGeometry padding =
@@ -109,6 +96,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
+        drawer: const CustomDrawer(),
         appBar: _buildAppBar(size),
         body: SizedBox(
           width: size.width,
@@ -147,7 +135,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         onChanged: (value) {
                           setState(() {
                             _searchQuery = value;
-                            searchAndFilter(_searchQuery);
+                            //searchAndFilter(_searchQuery);
                           });
                         },
                         style: GoogleFonts.ubuntu(
@@ -162,7 +150,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           fillColor: const Color.fromARGB(255, 240, 240, 240),
                           prefixIcon: IconButton(
                             onPressed: () {
-                              // searchAndFilter(_searchQuery);
+                              showSearch(
+                                context: context,
+                                delegate: CustomSearchDelegate(),
+                              );
                             },
                             icon: const Icon(
                               Icons.search,
@@ -192,17 +183,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       ),
                     ),
                   ),
-                  // Expanded(
-                  //   child: ListView.builder(
-                  //     itemCount: filteredCities.length,
-                  //     itemBuilder: (BuildContext context, int index) {
-                  //       return ListTile(
-                  //         title: Text(filteredCities[index]),
-                  //         // Add more ListTile properties as needed
-                  //       );
-                  //     },
-                  //   ),
-                  // ),
+                  //
                   FadeInUp(
                     delay: const Duration(milliseconds: 600),
                     child: Container(
@@ -409,10 +390,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         child: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          leading: const Icon(
-            Icons.menu,
-            color: Colors.black,
-          ),
           actions: [
             Padding(
               padding: const EdgeInsets.only(
@@ -574,6 +551,195 @@ class TabViewChild extends StatelessWidget {
               ),
             ],
           ),
+        );
+      },
+    );
+  }
+}
+
+class CustomDrawer extends StatelessWidget {
+  const CustomDrawer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          const DrawerHeader(
+            decoration: BoxDecoration(
+              color: Colors.deepPurpleAccent,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CircleAvatar(
+                  radius: 30,
+                  backgroundImage: AssetImage(
+                      "assets/images/Animation - 1712693807260.gif"), // Change this to your profile picture
+                ),
+                SizedBox(height: 10),
+                Text(
+                  'Sara Mohamed', // Change this to the user's name
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          ListTile(
+            title: Text(
+              'Profile Page'.tr,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
+              ),
+            ),
+            leading: const Icon(
+              Icons.person,
+              color: Colors.deepPurpleAccent,
+            ),
+            onTap: () {
+              Get.to(ProfileScreen);
+              // Implement navigation to personal page
+            },
+          ),
+          ListTile(
+            title: Text(
+              'Settings'.tr,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
+              ),
+            ),
+            leading: const Icon(
+              Icons.settings,
+              color: Colors.deepPurpleAccent,
+            ),
+            onTap: () {
+              Get.to(ComingSoon);
+              // Implement navigation to settings
+            },
+          ),
+          ListTile(
+            title: Text(
+              'Places'.tr,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
+              ),
+            ),
+            leading: const Icon(
+              Icons.place,
+              color: Colors.deepPurpleAccent,
+            ),
+            onTap: () {
+              Get.to(TravelPlacesPage);
+              // Implement navigation to places
+            },
+          ),
+          ListTile(
+            title: Text(
+              'Log Out'.tr,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.red,
+              ),
+            ),
+            leading: const Icon(
+              Icons.logout,
+              color: Colors.red,
+            ),
+            onTap: () async {
+              await FirebaseAuth.instance.signOut();
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil("login", (route) => false);
+              // Implement log out functionality
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CustomSearchDelegate extends SearchDelegate {
+  List<String> searchTerms = [
+    "Baron Palace".tr,
+    "Amr Ibn al'As mosque".tr,
+    "Sewa Lake".tr,
+    "Valley of the Kings".tr,
+    "Qaitbay Citadel".tr,
+    "Karnak Temple".tr,
+    "Cairo Tower".tr,
+    "Saint Catherine".tr,
+    "Alexandria Library".tr,
+    "Elephantine Island".tr,
+    ////////////////////////
+  ];
+  @override
+  List<Widget> buildActions(BuildContext context) {
+    return [
+      IconButton(
+          onPressed: () {
+            query = '';
+          },
+          icon: const Icon(Icons.clear))
+    ];
+  }
+
+  @override
+  Widget buildLeading(BuildContext context) {
+    return IconButton(
+      onPressed: () {
+        close(context, null);
+      },
+      icon: const Icon(Icons.arrow_back),
+    );
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    List<String> matchQuery = [];
+    for (var places in searchTerms) {
+      if (places.toLowerCase().contains(query.toLowerCase())) {
+        matchQuery.add(places);
+      }
+    }
+    return ListView.builder(
+      itemCount: matchQuery.length,
+      itemBuilder: (context, index) {
+        var result = matchQuery[index];
+        return ListTile(
+          title: Text(result),
+        );
+      },
+    );
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    List<String> matchQuery = [];
+    for (var places in searchTerms) {
+      if (places.toLowerCase().contains(query.toLowerCase())) {
+        matchQuery.add(places);
+      }
+    }
+    return ListView.builder(
+      itemCount: matchQuery.length,
+      itemBuilder: (context, index) {
+        var result = matchQuery[index];
+        return ListTile(
+          title: Text(result),
+          onTap: () {
+            Get.to(const DestinationPage1());
+          },
         );
       },
     );
