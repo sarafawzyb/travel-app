@@ -22,8 +22,8 @@ class _DestinationPageState extends State<DestinationPage1> {
         foregroundColor: Colors.white,
         automaticallyImplyLeading: true,
         backgroundColor: Colors.deepPurpleAccent,
-        title: const Text(
-          'Baron Palace',
+        title:  Text(
+          'Baron Palace'.tr,
           style: TextStyle(color: Colors.white),
         ),
         actions: [
@@ -55,8 +55,8 @@ class _DestinationPageState extends State<DestinationPage1> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          'Baron Palace',
+                         Text(
+                          'Baron Palace'.tr,
                           style: TextStyle(
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
@@ -66,14 +66,14 @@ class _DestinationPageState extends State<DestinationPage1> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Cairo',
+                              'Cairo'.tr,
                               style: TextStyle(
                                 fontSize: 18.0,
                                 color: Colors.grey[600],
                               ),
                             ),
-                            const Text(
-                              '20 LE',
+                             Text(
+                              '20 LE'.tr,
                               style: TextStyle(
                                 fontSize: 20.0,
                                 fontWeight: FontWeight.bold,
@@ -117,14 +117,14 @@ class _DestinationPageState extends State<DestinationPage1> {
                         SizedBox(
                           height: 8,
                         ),
-                        const Text(
-                          "People",
+                         Text(
+                          "People".tr,
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const Text("Number of people in your group",
+                         Text("Number of people in your group".tr,
                           style: TextStyle(
                             fontSize: 16.0,
                             color: Colors.grey,
@@ -173,15 +173,15 @@ class _DestinationPageState extends State<DestinationPage1> {
                           ),
                         ),
                         const SizedBox(height: 16.0),
-                        const Text(
-                          "Description",
+                         Text(
+                          "Description".tr,
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
-                          'The Baron Palace, also known as Le Palais Hindou, is a distinctive and historic mansion in Heliopolis, a suburb northeast of central Cairo, Egypt. It was built in 1905 for Édouard Empain, Baron Empain, a Belgian businessman and industrialist with particular interests in tramways.',
+                          'The Baron Palace, also known as Le Palais Hindou, is a distinctive and historic mansion in Heliopolis, a suburb northeast of central Cairo, Egypt. It was built in 1905 for Édouard Empain, Baron Empain, a Belgian businessman and industrialist with particular interests in tramways.'.tr,
                           style: TextStyle(
                             fontSize: 16.0,
                             color: Colors.grey[600],
@@ -218,8 +218,8 @@ class _DestinationPageState extends State<DestinationPage1> {
                     backgroundColor: Colors.deepPurpleAccent,
                     minimumSize: const Size(200, 50),
                   ),
-                  child: const Text(
-                    'Book Trip Now',
+                  child:  Text(
+                    'Book Trip Now'.tr,
                     style: TextStyle(
                       color: Colors.white,
                     ),

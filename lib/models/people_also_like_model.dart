@@ -40,40 +40,4 @@ List<PeopleAlsoLikeModel> peopleAlsoLikeModel = [
       image: "assets/images/Qaitbay.jpg",
       day: 3,
       price: 546),
-  // PeopleAlsoLikeModel(
-  //     title: "Qaitbay Citadel",
-  //     location: "Alexandria",
-  //     image: "assets/images/Qaitbay.jpg",
-  //     day: 3,
-  //     price: 546),
-  // PeopleAlsoLikeModel(
-  //     title: "Baron Palace",
-  //     location: "Cairo",
-  //     image: "assets/images/baron.jpg",
-  //     day: 5,
-  //     price: 430),
-  // PeopleAlsoLikeModel(
-  //     title: "Amr Ibn al'As mosque",
-  //     location: "Cairo",
-  //     image: "assets/images/gam3.jpg",
-  //     day: 7,
-  //     price: 233),
-  // PeopleAlsoLikeModel(
-  //     title: "Sewa Lake",
-  //     location: "Marsa Matrouh",
-  //     image: "assets/images/sewa.jpg",
-  //     day: 9,
-  //     price: 550),
-  // PeopleAlsoLikeModel(
-  //     title: "Qaitbay Citadel",
-  //     location: "Alexandria",
-  //     image: "assets/images/Qaitbay.jpg",
-  //     day: 3,
-  //     price: 546),
-  // PeopleAlsoLikeModel(
-  //     title: "Qaitbay Citadel",
-  //     location: "Alexandria",
-  //     image: "assets/images/Qaitbay.jpg",
-  //     day: 3,
-  //     price: 546),
 ];

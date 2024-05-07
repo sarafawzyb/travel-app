@@ -22,8 +22,8 @@ class _DestinationPageState extends State<DestinationPage2> {
         foregroundColor: Colors.white,
         automaticallyImplyLeading: true,
         backgroundColor: Colors.deepPurpleAccent,
-        title: const Text(
-          'Alexandria Library',
+        title:  Text(
+          'Alexandria Library'.tr,
           style: TextStyle(color: Colors.white),
         ),
         actions: [
@@ -55,8 +55,8 @@ class _DestinationPageState extends State<DestinationPage2> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          'Alexandria Library',
+                         Text(
+                          'Alexandria Library'.tr,
                           style: TextStyle(
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
@@ -66,14 +66,14 @@ class _DestinationPageState extends State<DestinationPage2> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Alexandria',
+                              'Alexandria'.tr,
                               style: TextStyle(
                                 fontSize: 18.0,
                                 color: Colors.grey[600],
                               ),
                             ),
-                            const Text(
-                              '20 LE',
+                             Text(
+                              '20 LE'.tr,
                               style: TextStyle(
                                 fontSize: 20.0,
                                 fontWeight: FontWeight.bold,
@@ -117,14 +117,14 @@ class _DestinationPageState extends State<DestinationPage2> {
                         SizedBox(
                           height: 8,
                         ),
-                        const Text(
-                          "People",
+                         Text(
+                          "People".tr,
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const Text("Number of people in your group",
+                         Text("Number of people in your group".tr,
                           style: TextStyle(
                             fontSize: 16.0,
                             color: Colors.grey,
@@ -173,15 +173,15 @@ class _DestinationPageState extends State<DestinationPage2> {
                           ),
                         ),
                         const SizedBox(height: 16.0),
-                        const Text(
-                          "Description",
+                         Text(
+                          "Description".tr,
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
-                          'The Bibliotheca Alexandrina is a major library and cultural center on the shore of the Mediterranean Sea in Alexandria, Egypt. It was a one of the largest libraries worldwide, which was lost in antiquity.',
+                          'The Bibliotheca Alexandrina is a major library and cultural center on the shore of the Mediterranean Sea in Alexandria, Egypt. It was a one of the largest libraries worldwide, which was lost in antiquity.'.tr,
                           style: TextStyle(
                             fontSize: 16.0,
                             color: Colors.grey[600],
@@ -218,8 +218,8 @@ class _DestinationPageState extends State<DestinationPage2> {
                     backgroundColor: Colors.deepPurpleAccent,
                     minimumSize: const Size(200, 50),
                   ),
-                  child: const Text(
-                    'Book Trip Now',
+                  child:  Text(
+                    'Book Trip Now'.tr,
                     style: TextStyle(
                       color: Colors.white,
                     ),

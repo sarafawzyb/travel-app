@@ -22,8 +22,8 @@ class _DestinationPageState extends State<DestinationPage3> {
         foregroundColor: Colors.white,
         automaticallyImplyLeading: true,
         backgroundColor: Colors.deepPurpleAccent,
-        title: const Text(
-          'Sewa Lake',
+        title:  Text(
+          'Sewa Lake'.tr,
           style: TextStyle(color: Colors.white),
         ),
         actions: [
@@ -55,8 +55,8 @@ class _DestinationPageState extends State<DestinationPage3> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          'Sewa Lake',
+                         Text(
+                          'Sewa Lake'.tr,
                           style: TextStyle(
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
@@ -66,14 +66,14 @@ class _DestinationPageState extends State<DestinationPage3> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Marsa Matrouh',
+                              'Marsa Matrouh'.tr,
                               style: TextStyle(
                                 fontSize: 18.0,
                                 color: Colors.grey[600],
                               ),
                             ),
-                            const Text(
-                              '250 LE',
+                             Text(
+                              '250 LE'.tr,
                               style: TextStyle(
                                 fontSize: 20.0,
                                 fontWeight: FontWeight.bold,
@@ -117,14 +117,14 @@ class _DestinationPageState extends State<DestinationPage3> {
                         SizedBox(
                           height: 8,
                         ),
-                        const Text(
-                          "People",
+                         Text(
+                          "People".tr,
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const Text("Number of people in your group",
+                         Text("Number of people in your group".tr,
                           style: TextStyle(
                             fontSize: 16.0,
                             color: Colors.grey,
@@ -173,15 +173,15 @@ class _DestinationPageState extends State<DestinationPage3> {
                           ),
                         ),
                         const SizedBox(height: 16.0),
-                        const Text(
-                          "Description",
+                         Text(
+                          "Description".tr,
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
-                          'It is an Egyptian city and oasis in the Western Desert, about 300 km from the Mediterranean coast to the southwest of Marsa Matrouh, and administratively affiliated with the Matrouh Governorate. Wells and springs are spread throughout it, which are used for irrigation, drinking, natural water bottling, and treatment, and it has four major lakes.',
+                          'It is an Egyptian city and oasis in the Western Desert, about 300 km from the Mediterranean coast to the southwest of Marsa Matrouh, and administratively affiliated with the Matrouh Governorate. Wells and springs are spread throughout it, which are used for irrigation, drinking, natural water bottling, and treatment, and it has four major lakes.'.tr,
                           style: TextStyle(
                             fontSize: 16.0,
                             color: Colors.grey[600],
@@ -218,8 +218,8 @@ class _DestinationPageState extends State<DestinationPage3> {
                     backgroundColor: Colors.deepPurpleAccent,
                     minimumSize: const Size(200, 50),
                   ),
-                  child: const Text(
-                    'Book Trip Now',
+                  child:  Text(
+                    'Book Trip Now'.tr,
                     style: TextStyle(
                       color: Colors.white,
                     ),

@@ -111,6 +111,11 @@ class MyLocale implements Translations {
           "Qaitbay Citadel": "قلعة قايتباي",
           "LE": "جنية مصري",
           "Russian": "الروسية",
+          "The Bibliotheca Alexandrina is a major library and cultural center on the shore of the Mediterranean Sea in Alexandria, Egypt. It was a one of the largest libraries worldwide, which was lost in antiquity.":
+          "مكتبة الإسكندرية هي مكتبة كبرى ومركز ثقافي على شاطئ البحر الأبيض المتوسط في الإسكندرية، مصر. وكانت من أكبر المكتبات في العالم، والتي فقدت في العصور القديمة.",
+          "It is an Egyptian city and oasis in the Western Desert, about 300 km from the Mediterranean coast to the southwest of Marsa Matrouh, and administratively affiliated with the Matrouh Governorate. Wells and springs are spread throughout it, which are used for irrigation, drinking, natural water bottling, and treatment, and it has four major lakes.":
+          "هي مدينة مصرية وواحة في الصحراء الغربية، تبعد عن ساحل البحر الأبيض المتوسط حوالي 300 كيلومتر إلى الجنوب الغربي من مرسى مطروح، وتتبع إدارياً لمحافظة مطروح، وتنتشر في أرجائها الآبار والعيون التي تستخدم للري والشرب. وتعبئة ومعالجة المياه الطبيعية، وبها أربع بحيرات رئيسية.",
+          "Saint Catherine is a town located in the South Sinai Governorate of Egypt, situated at the foot of Mount Sinai.The city is 1,586 metres (5,203 ft) above sea level and is 120 kilometres (75 mi) from Nuweiba.":"سانت كاترين هي مدينة تقع في محافظة جنوب سيناء في مصر، وتقع عند سفح جبل سيناء. ترتفع المدينة 1586 مترًا (5203 قدمًا) فوق مستوى سطح البحر وتبعد 120 كيلومترًا (75 ميلًا) عن نويبع.",
         },
         "en": {
           "Top Tours": "Top Tours",
@@ -336,6 +341,11 @@ class MyLocale implements Translations {
           "Qaitbay Citadel": "Qaitbay Citadel",
           "LE": "ЛЕ",
           "Russian": "Русский",
+          "The Bibliotheca Alexandrina is a major library and cultural center on the shore of the Mediterranean Sea in Alexandria, Egypt. It was a one of the largest libraries worldwide, which was lost in antiquity.":
+          "Александрийская библиотека — крупная библиотека и культурный центр на берегу Средиземного моря в Александрии, Египет. Это была одна из крупнейших библиотек мира, затерянная в древности.",
+          "It is an Egyptian city and oasis in the Western Desert, about 300 km from the Mediterranean coast to the southwest of Marsa Matrouh, and administratively affiliated with the Matrouh Governorate. Wells and springs are spread throughout it, which are used for irrigation, drinking, natural water bottling, and treatment, and it has four major lakes.":
+          "Это египетский город и оазис в Западной пустыне, примерно в 300 км от побережья Средиземного моря к юго-западу от Марса-Матруха, и административно связанный с губернаторством Матрух. По всему нему раскинулись колодцы и источники, которые используются для орошения, питья , розлив и очистка природной воды, а также четыре крупных озера.",
+          "Saint Catherine is a town located in the South Sinai Governorate of Egypt, situated at the foot of Mount Sinai.The city is 1,586 metres (5,203 ft) above sea level and is 120 kilometres (75 mi) from Nuweiba.":"Сент-Катерин — это город, расположенный в провинции Южный Синай в Египте, у подножия горы Синай. Город находится на высоте 1586 метров (5203 фута) над уровнем моря и в 120 километрах (75 миль) от Нувейбы",
         }
       };
 }

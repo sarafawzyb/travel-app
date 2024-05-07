@@ -22,8 +22,8 @@ class _DestinationPageState extends State<DestinationPage4> {
         foregroundColor: Colors.white,
         automaticallyImplyLeading: true,
         backgroundColor: Colors.deepPurpleAccent,
-        title: const Text(
-          'Saint Catherine',
+        title:  Text(
+          'Saint Catherine'.tr,
           style: TextStyle(color: Colors.white),
         ),
         actions: [
@@ -55,8 +55,8 @@ class _DestinationPageState extends State<DestinationPage4> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          'Saint Catherine',
+                         Text(
+                          'Saint Catherine'.tr,
                           style: TextStyle(
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
@@ -66,14 +66,14 @@ class _DestinationPageState extends State<DestinationPage4> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'South Sinai',
+                              'South Sinai'.tr,
                               style: TextStyle(
                                 fontSize: 18.0,
                                 color: Colors.grey[600],
                               ),
                             ),
-                            const Text(
-                              '10 LE',
+                             Text(
+                              '10 LE'.tr,
                               style: TextStyle(
                                 fontSize: 20.0,
                                 fontWeight: FontWeight.bold,
@@ -117,14 +117,14 @@ class _DestinationPageState extends State<DestinationPage4> {
                         SizedBox(
                           height: 8,
                         ),
-                        const Text(
-                          "People",
+                         Text(
+                          "People".tr,
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const Text("Number of people in your group",
+                         Text("Number of people in your group".tr,
                           style: TextStyle(
                             fontSize: 16.0,
                             color: Colors.grey,
@@ -173,15 +173,15 @@ class _DestinationPageState extends State<DestinationPage4> {
                           ),
                         ),
                         const SizedBox(height: 16.0),
-                        const Text(
-                          "Description",
+                         Text(
+                          "Description".tr,
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
-                          'Saint Catherine is a town located in the South Sinai Governorate of Egypt, situated at the foot of Mount Sinai.The city is 1,586 metres (5,203 ft) above sea level and is 120 kilometres (75 mi) from Nuweiba.',
+                          'Saint Catherine is a town located in the South Sinai Governorate of Egypt, situated at the foot of Mount Sinai.The city is 1,586 metres (5,203 ft) above sea level and is 120 kilometres (75 mi) from Nuweiba.'.tr,
                           style: TextStyle(
                             fontSize: 16.0,
                             color: Colors.grey[600],
@@ -218,8 +218,8 @@ class _DestinationPageState extends State<DestinationPage4> {
                     backgroundColor: Colors.deepPurpleAccent,
                     minimumSize: const Size(200, 50),
                   ),
-                  child: const Text(
-                    'Book Trip Now',
+                  child:  Text(
+                    'Book Trip Now'.tr,
                     style: TextStyle(
                       color: Colors.white,
                     ),

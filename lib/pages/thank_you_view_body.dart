@@ -65,7 +65,7 @@ class ThankYouViewBody extends StatelessWidget {
                     ),
                      PaymentItemInfo(
                       title: 'Date'.tr,
-                      value: '19/4/2024'.tr,
+                      value: '8/5/2024'.tr,
                     ),
                     const SizedBox(height: 20,),
                      PaymentItemInfo(
@@ -81,7 +81,7 @@ class ThankYouViewBody extends StatelessWidget {
                       thickness: 2,
                       height: 60,
                     ),
-                     TotalPrice(title: 'Total'.tr, value: '350 LE'.tr),
+                     TotalPrice(title: 'Total'.tr, value: '20 LE'.tr),
                     const SizedBox(height: 30,),
                     //---Card-info---//
                     Container(
